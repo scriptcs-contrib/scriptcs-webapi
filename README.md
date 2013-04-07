@@ -24,7 +24,7 @@ Disclaimer: Ultimately (soon) you will be able to install this via nuget and not
 * Create a start.csx and paste the code below
 
 ```csharp
-public class TestController : System.Web.Http.ApiController {
+public class TestController : ApiController {
   public string Get() {
     return "Hello world!";
   }
