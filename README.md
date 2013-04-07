@@ -12,9 +12,9 @@ Makes using ASP.NET Web API's self host with scriptcs easy as cake
 * Configures to allow resolving script controllers.
 * Automatically imports common web api namespaces for you.
 
-## Getting started web API
+## Getting started wit Web API using the pack
 
-* Clone this repo
+* Clone this repo (if you are seeing this before my [PR] (https://github.com/scriptcs/scriptcs/pull/177) was accepted, then be sure to first clone my [fork] (https://github.com/glennblock/scriptcs/tree/147) of scriptcs and use it.
 * Build the solution (make sure you enable package restore).
 * Create a new folder for your script i.e. c:\hellowebapi and change to it.
 * Install the Web Api Self Host nuget package ```scriptcs install Microsoft.AspNet.WebApi.SelfHost```
@@ -37,7 +37,11 @@ Console.ReadKey();
 ```
 * Running as admin type ```scriptcs start.csx``` to launch the app.
 * Open a browser to "http://localhost:8080/test";
+* That's it, your API is up!
 
 ## Customizing
 You can customize the host by modifying the configuration object. Or if you would like to pass your own you can use the CreateServer overload.
 If you pass your own, the ControllerHttpResolver will be replaced with a script friendly one.
+
+## What's next
+* Create a nuget package.
