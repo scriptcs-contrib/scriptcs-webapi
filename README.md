@@ -20,7 +20,7 @@ Disclaimer: Ultimately (soon) you will be able to install this via nuget and not
 * Build the solution (make sure you enable package restore).
 * Create a new folder for your script i.e. c:\hellowebapi and change to it.
 * Install the Web Api Self Host nuget package ```scriptcs -install Microsoft.AspNet.WebApi.SelfHost```
-* Copy ScriptCs.WebApi.Pack.dll from the script pack bin folder to your local bin.
+* Copy ScriptCs.WebApi.Pack.dll, and ScriptCs.Contracts.dll from the script pack bin folder to your local bin.
 * Create a start.csx and paste the code below
 
 ```csharp
