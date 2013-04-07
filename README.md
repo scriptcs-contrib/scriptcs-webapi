@@ -4,7 +4,7 @@ scriptcs-webapi
 # Web API Script Pack
 
 ## What is it?
-Makes using ASP.NET Web API's self host with scriptcs easy as cake
+Makes using ASP.NET Web API's self host with scriptcs easy as cake, much easier than [this] (https://github.com/scriptcs/scriptcs-samples/tree/master/webapihost) :)
 
 ## Highlights:
 
