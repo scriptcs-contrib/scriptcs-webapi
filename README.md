@@ -14,6 +14,8 @@ Makes using ASP.NET Web API's self host with scriptcs easy as cake, much easier 
 
 ## Getting started with Web API using the pack
 
+Disclaimer: Ultimately (soon) you will be able to install this via nuget and not have to clone / build / copy
+
 * Clone this repo (if you are seeing this before my [PR] (https://github.com/scriptcs/scriptcs/pull/177) was accepted, then be sure to first clone my [fork] (https://github.com/glennblock/scriptcs/tree/147) of scriptcs and use it.
 * Build the solution (make sure you enable package restore).
 * Create a new folder for your script i.e. c:\hellowebapi and change to it.
