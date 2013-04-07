@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.SelfHost;
@@ -9,9 +10,13 @@ namespace ScriptCs.WebApi
     public class WebApi : IScriptPackContext
     {
 
-        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config)
+        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config, Assembly caller = null)
         {
-            var caller = System.Reflection.Assembly.GetCallingAssembly();
+            if (caller == null)
+            {
+                caller = Assembly.GetCallingAssembly();
+            }
+
             config.Services.Replace(typeof(IHttpControllerTypeResolver), new ControllerResolver(caller));
 
             config.Routes.MapHttpRoute(name: "DefaultApi",
@@ -23,7 +28,8 @@ namespace ScriptCs.WebApi
 
         public HttpSelfHostServer CreateServer(string baseAddress)
         {
-            return CreateServer(new HttpSelfHostConfiguration(baseAddress));
+            var caller = Assembly.GetCallingAssembly();
+            return CreateServer(new HttpSelfHostConfiguration(baseAddress), caller);
         }
     }
 }
