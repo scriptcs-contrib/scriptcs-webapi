@@ -8,10 +8,10 @@ namespace ScriptCs.WebApi
 {
     public class WebApi : IScriptPackContext
     {
-        public HttpSelfHostServer CreateServer(string baseAddress)
+
+        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config)
         {
             var caller = System.Reflection.Assembly.GetCallingAssembly();
-            var config = new HttpSelfHostConfiguration(new Uri(baseAddress));
             config.Services.Replace(typeof(IHttpControllerTypeResolver), new ControllerResolver(caller));
 
             config.Routes.MapHttpRoute(name: "DefaultApi",
@@ -19,6 +19,11 @@ namespace ScriptCs.WebApi
                                        defaults: new { id = RouteParameter.Optional }
                 );
             return new HttpSelfHostServer(config);
+        }
+
+        public HttpSelfHostServer CreateServer(string baseAddress)
+        {
+            return CreateServer(new HttpSelfHostConfiguration(baseAddress));
         }
     }
 }
