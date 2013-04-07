@@ -15,9 +15,9 @@ namespace ScriptCs.WebApi
             config.Services.Replace(typeof(IHttpControllerTypeResolver), new ControllerResolver(caller));
 
             config.Routes.MapHttpRoute(name: "DefaultApi",
-                                       routeTemplate: "{controller}/{id}",
-                                       defaults: new { id = RouteParameter.Optional }
-                );
+                routeTemplate: "{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
             return new HttpSelfHostServer(config);
         }
 
