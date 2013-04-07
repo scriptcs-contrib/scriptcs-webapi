@@ -35,6 +35,8 @@ server.OpenAsync().Wait();
 Console.WriteLine("Listening...");
 Console.ReadKey();
 ```
+* Running as admin type ```scriptcs start.csx``` to launch the app.
+* Open a browser to "http://localhost:8080/test";
 
 ## Customizing
 You can customize the host by modifying the configuration object. Or if you would like to pass your own you can use the CreateServer overload.
