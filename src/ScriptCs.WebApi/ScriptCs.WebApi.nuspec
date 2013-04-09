@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>$id$</id>
+    <id>ScriptCs.WebApi</id>
     <version>$version$-alpha</version>
     <title>$title$</title>
     <authors>$author$</authors>
