@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Glenn Block, Justin Rusbatch, Filip Wojcieszyn")]
 [assembly: AssemblyProduct("ScriptCs.WebApi")]
-[assembly: AssemblyCopyright("Copyright © Glenn Block 2013")]
+[assembly: AssemblyCopyright("Copyright © Glenn Block, Justin Rusbatch, Filip Wojcieszyn 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
