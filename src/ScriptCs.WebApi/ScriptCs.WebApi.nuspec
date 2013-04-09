@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$-alpha</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://raw.github.com/scriptcs/scriptcs/dev/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/scriptcs/scriptcs-webapi</projectUrl>
+    <iconUrl>https://github.com/scriptcs/scriptcs/raw/dev/common/Icon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright Glenn Block, Justin Rusbatch, Filip Wojcieszyn 2013</copyright>
+    <tags>scriptcs webapi</tags>
+  </metadata>
+</package>
