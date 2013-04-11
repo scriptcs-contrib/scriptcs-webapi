@@ -43,9 +43,9 @@ server.CloseAsync().Wait();
 * That's it, your API is up!
 
 ## Customizing
-You can customize the host by modifying the configuration object. Or if you would like to pass your own you can use the `CreateServer` overload.
-If you pass your own, the `ControllerResolver` will be replaced with a script friendly one.
-An additional `CreateServer` overload allows you to explicitly specify the controller types you want to expose in your api:
+You can customize the host by modifying the configuration object.
+Or if you would like to pass your own you can use the `CreateServer` overload.
+Additional `CreateServer` overload allows you to explicitly specify either assemblies or specific controller types you want to expose in your api:
 
 ```csharp
 // Use a custom configuration and specify controller types.
