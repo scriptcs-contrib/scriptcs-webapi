@@ -36,14 +36,23 @@ server.OpenAsync().Wait();
  
 Console.WriteLine("Listening...");
 Console.ReadKey();
+server.CloseAsync().Wait();
 ```
 * Running as admin type ```scriptcs start.csx``` to launch the app.
 * Open a browser to "http://localhost:8080/test";
 * That's it, your API is up!
 
 ## Customizing
-You can customize the host by modifying the configuration object. Or if you would like to pass your own you can use the CreateServer overload.
-If you pass your own, the ControllerHttpResolver will be replaced with a script friendly one.
+You can customize the host by modifying the configuration object.
+Or if you would like to pass your own you can use the `CreateServer` overload.
+Additional `CreateServer` overloads allow you to explicitly specify assemblies or `IHttpController` types you want to expose in your api:
+
+```csharp
+// Use a custom configuration and specify controller types.
+var config = new HttpSelfHostConfiguration("http://localhost:8080");
+var controllers = new List<Type> { typeof(TestController) };
+var server = webApi.CreateServer(config, controllers)
+```
 
 ## What's next
 * Create a nuget package.

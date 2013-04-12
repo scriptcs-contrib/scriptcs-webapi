@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
@@ -9,27 +12,36 @@ namespace ScriptCs.WebApi
 {
     public class WebApi : IScriptPackContext
     {
-
-        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config, Assembly caller = null)
+        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config, ICollection<Type> controllerTypes)
         {
-            if (caller == null)
-            {
-                caller = Assembly.GetCallingAssembly();
-            }
+            Contract.Requires(controllerTypes != null);
+            Contract.Requires(ControllerResolver.AllAssignableToIHttpController(controllerTypes));
 
-            config.Services.Replace(typeof(IHttpControllerTypeResolver), new ControllerResolver(caller));
+            config.Services.Replace(typeof(IHttpControllerTypeResolver), new ControllerResolver(controllerTypes));
 
             config.Routes.MapHttpRoute(name: "DefaultApi",
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
             return new HttpSelfHostServer(config);
+        }
+
+        public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config, params Assembly[] assemblies)
+        {
+            var types = assemblies.Length == 0 ?
+                Assembly.GetCallingAssembly().GetTypes() :
+                assemblies.SelectMany(a => a.GetTypes()).ToArray();
+
+            var controllerTypes = ControllerResolver.WhereControllerType(types).ToList();
+            return CreateServer(config, controllerTypes);
         }
 
         public HttpSelfHostServer CreateServer(string baseAddress)
         {
-            var caller = Assembly.GetCallingAssembly();
-            return CreateServer(new HttpSelfHostConfiguration(baseAddress), caller);
+            var types = Assembly.GetCallingAssembly().GetTypes();
+            var controllerTypes = ControllerResolver.WhereControllerType(types).ToList();
+            return CreateServer(new HttpSelfHostConfiguration(baseAddress), controllerTypes);
         }
     }
 }
