@@ -29,10 +29,8 @@ namespace ScriptCs.WebApi
 
         public HttpSelfHostServer CreateServer(HttpSelfHostConfiguration config, params Assembly[] assemblies)
         {
-            var types = assemblies.Length == 0 ?
-                Assembly.GetCallingAssembly().GetTypes() :
-                assemblies.SelectMany(a => a.GetTypes()).ToArray();
-
+            var controllerAssemblies = new List<Assembly> {Assembly.GetCallingAssembly()}.Union(assemblies);
+            var types = controllerAssemblies.SelectMany(a => a.GetTypes()).ToArray();
             var controllerTypes = ControllerResolver.WhereControllerType(types).ToList();
             return CreateServer(config, controllerTypes);
         }
