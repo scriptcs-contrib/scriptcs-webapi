@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("ScriptCs.WebApi")]
 [assembly: AssemblyDescription("scriptcs Script Pack for WebApi")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Glenn Block, Justin Rusbatch, Filip Wojcieszyn")]
+[assembly: AssemblyCompany("Glenn Block")]
 [assembly: AssemblyProduct("ScriptCs.WebApi")]
-[assembly: AssemblyCopyright("Copyright © Glenn Block, Justin Rusbatch, Filip Wojcieszyn 2013")]
+[assembly: AssemblyCopyright("Copyright © Glenn Block")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
