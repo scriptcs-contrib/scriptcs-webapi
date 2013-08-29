@@ -24,6 +24,8 @@ namespace ScriptCs.WebApi
                 }.ToList();
 
             namespaces.ForEach(session.ImportNamespace);
+
+            session.AddReference(@"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.dll");
         }
 
         void IScriptPack.Terminate()
