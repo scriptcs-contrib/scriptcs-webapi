@@ -11,13 +11,14 @@ Makes using ASP.NET Web API's self host with scriptcs easy as cake, much easier 
 * Creates a pre-configured self host with the default route already added.
 * Configures to allow resolving script controllers.
 * Automatically imports common web api namespaces for you.
+* Works as self hosted server or in OWIN
 
 ## Getting started with Web API using the pack
 
 Disclaimer: Ultimately (soon) you will be able to install this via nuget and not have to clone / build / copy
 
 * Create a new folder for your script i.e. c:\hellowebapi and change to it.
-* Install the Web API script pack ```scriptcs -install ScriptCs.WebApi```
+* Install the Web API script pack ```scriptcs -install -pre ScriptCs.WebApi```
 * Create a start.csx and paste the code below
 
 ```csharp
@@ -32,12 +33,33 @@ var server = webApi.CreateServer("http://localhost:8080");
 server.OpenAsync().Wait();
  
 Console.WriteLine("Listening...");
-Console.ReadKey();
+Console.ReadLine();
 server.CloseAsync().Wait();
 ```
 * Running as admin type ```scriptcs start.csx``` to launch the app.
-* Open a browser to "http://localhost:8080/test";
+* Open a browser to "http://localhost:8080/api/test";
 * That's it, your API is up!
+
+Alternatively you can host the script pack in OWIN e.g.
+
+```csharp
+public class TestController : ApiController {
+  public string Get() {
+    return "Hello world!";
+  }
+}
+
+Require<OwinSelfHost>();
+
+var webApi = Require<WebApi>();
+var config = webApi.Create();
+
+using ( OwinSelfHost.CreateServer("http://localhost:8080", app => app.UseWebApi(config)) ) {
+	Console.WriteLine("Listening...");
+	Console.ReadLine();
+}
+```
+
 
 ## Customizing
 You can customize the host by modifying the configuration object.

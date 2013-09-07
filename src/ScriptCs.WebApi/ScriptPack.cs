@@ -20,7 +20,8 @@ namespace ScriptCs.WebApi
                 {
                     "System.Web.Http",
                     "System.Web.Http.SelfHost",
-                    "System.Web.Http.Dispatcher"
+                    "System.Web.Http.Dispatcher",
+                    "Owin"
                 }.ToList();
 
             namespaces.ForEach(session.ImportNamespace);
