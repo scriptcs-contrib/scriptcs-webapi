@@ -86,12 +86,44 @@ namespace ScriptCs.WebApi
             return controllerTypes;
         }
 
+        private static readonly string[] IgnoredAssemblyPrefixes = new[]
+            {
+                "Autofac,",
+                "Autofac.",
+                "Common.Logging",
+                "log4net,",
+                "Nancy,",
+                "Nancy.",
+                "NuGet.",
+                "PowerArgs,",
+                "Roslyn.",
+                "scriptcs,",
+                "ScriptCs.",
+                "ServiceStack.",
+            };
+
         public IEnumerable<Type> GetLoadedTypes()
         {
             var types = new List<Type>();
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies().Where(a => !IgnoredAssemblyPrefixes.Any(p => a.GetName().Name.StartsWith(p))))
             {
-                types.AddRange(assembly.GetTypes());
+                try
+                {
+                    types.AddRange(assembly.GetTypes());
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    Console.WriteLine("Count not load types from {0}", assembly.FullName);
+                    foreach (var load in ex.LoaderExceptions)
+                    {
+                        Console.WriteLine("Exception {0}", load);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Count not load types from {0} - {0}", assembly.FullName, ex);
+                }
+                
             }
             return types;
         }
