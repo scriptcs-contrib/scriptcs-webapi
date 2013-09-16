@@ -20,10 +20,13 @@ namespace ScriptCs.WebApi
                 {
                     "System.Web.Http",
                     "System.Web.Http.SelfHost",
-                    "System.Web.Http.Dispatcher"
+                    "System.Web.Http.Dispatcher",
+                    "Owin"
                 }.ToList();
 
             namespaces.ForEach(session.ImportNamespace);
+
+            session.AddReference(@"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Net.Http.dll");
         }
 
         void IScriptPack.Terminate()
