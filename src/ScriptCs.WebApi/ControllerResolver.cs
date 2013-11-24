@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
+using System.Web.Http.Controllers;
 using System.Web.Http.Dispatcher;
 
 namespace ScriptCs.WebApi
@@ -28,14 +29,14 @@ namespace ScriptCs.WebApi
         {
             Contract.Requires(types != null);
 
-            return types.Where(x => typeof(System.Web.Http.Controllers.IHttpController).IsAssignableFrom(x));
+            return types.Where(x => typeof(IHttpController).IsAssignableFrom(x) && x != typeof(IHttpController));
         }
 
         internal static bool AllAssignableToIHttpController(IEnumerable<Type> types)
         {
             Contract.Requires(types != null);
 
-            return types.All(x => typeof(System.Web.Http.Controllers.IHttpController).IsAssignableFrom(x));
+            return types.All(x => typeof(IHttpController).IsAssignableFrom(x));
         }
     }
 }
