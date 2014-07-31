@@ -53,7 +53,7 @@ var server = webapi.
 	Configure(
 		typeof(TestController),
 		builder=> {
-		  //builder.Use<MyMiddleware>();
+		  builder.Use<MyMiddleware>();
 		}
 	).
 	Start("http://localhost:8080");
