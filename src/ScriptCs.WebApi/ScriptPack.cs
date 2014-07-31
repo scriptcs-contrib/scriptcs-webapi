@@ -33,8 +33,8 @@ namespace ScriptCs.WebApi
             var namespaces = new[]
                 {
                     "System.Web.Http",
-                    "System.Web.Http.SelfHost",
-                    "System.Web.Http.Dispatcher",
+                    "System.Net.Http",
+                    "System.Net.Http.Headers",
                     "Owin"
                 }.ToList();
 
