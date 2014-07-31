@@ -20,7 +20,7 @@ using System.Net.Http;
 namespace ScriptCs.WebApi
 {
     /// <summary>
-    /// Creates a web api either as a self hosetd server of a OWIN middleware component
+    /// Creates a web api using an OWIN host
     /// </summary>
     public class WebApi : IScriptPackContext
     {
@@ -98,7 +98,6 @@ namespace ScriptCs.WebApi
             return WebApp.Start(baseAddress, appBuilder =>
             {
                 appBuilder.UseWebApi(_config);
-                
                 ApplyDefaultConfiguration(_config, _controllerTypes);
                 _startupAction(appBuilder);
             });

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>ScriptCs.WebApi2</id>
-        <version>1.0</version>
+      <version>$version$</version>
         <title>ScriptCs.WebApi2</title>
         <authors>Glenn Block</authors>
         <owners>Glenn Block</owners>
@@ -16,7 +16,6 @@
 * The host is wired up to discover in-memory controllers.</description>
         <summary />
         <releaseNotes>1.0 - Updated to Web API 2.2
-        0.5.0 - Added support for additional hosts and helper methods for formatters and handlers.
 </releaseNotes>
         <copyright>Copyright Glenn Block 2014</copyright>
         <tags>scriptcs webapi owin</tags>
