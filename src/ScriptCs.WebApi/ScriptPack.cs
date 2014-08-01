@@ -33,8 +33,9 @@ namespace ScriptCs.WebApi
             var namespaces = new[]
                 {
                     "System.Web.Http",
-                    "System.Web.Http.SelfHost",
-                    "System.Web.Http.Dispatcher",
+                    "System.Web.Http.Routing",
+                    "System.Net.Http",
+                    "System.Net.Http.Headers",
                     "Owin"
                 }.ToList();
 

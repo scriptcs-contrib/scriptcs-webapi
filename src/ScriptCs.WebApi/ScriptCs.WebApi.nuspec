@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>ScriptCs.WebApi</id>
-        <version>0.5.0</version>
-        <title>ScriptCs.WebApi</title>
+        <id>ScriptCs.WebApi2</id>
+      <version>$version$</version>
+        <title>ScriptCs.WebApi2</title>
         <authors>Glenn Block</authors>
         <owners>Glenn Block</owners>
         <licenseUrl>https://raw.github.com/scriptcs/scriptcs-webapi/dev/LICENSE.md</licenseUrl>
@@ -12,22 +12,12 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Script pack for ASP.NET Web API.  
 
-* Use the script pack to easily create a self-host, or configure an exsisting host such as an OWIN host. 
-* The host is wired up to discover in-memory controllers.
-* Includes helper methods for creating formatters and message handlers.</description>
+* Use this script pack to easily create an OWIN self-host, or configure an existing OWIN host 
+* The host is wired up to discover in-memory controllers.</description>
         <summary />
-        <releaseNotes>0.1.0 - Initial version
-0.5.0 - Added support for additional hosts and helper methods for formatters and handlers.</releaseNotes>
-        <copyright>Copyright Glenn Block 2013</copyright>
-        <tags>scriptcs webapi</tags>
-        <dependencies>
-			      <dependency id="Common.Logging" version="2.1.2" />
-            <dependency id="Microsoft.AspNet.WebApi.SelfHost" version="5.0" />
-            <dependency id="Microsoft.Owin" version="2.0.0"/>
-            <dependency id="ScriptCs.Contracts" version="0.8.0" />
-        </dependencies>
+        <releaseNotes>1.0 - Updated to Web API 2.2
+</releaseNotes>
+        <copyright>Copyright Glenn Block 2014</copyright>
+        <tags>scriptcs webapi owin</tags>
     </metadata>
-    <files>
-        <file src="lib\net45\ScriptCs.WebApi.Pack.dll" target="lib\net45\ScriptCs.WebApi.Pack.dll" />
-    </files>
 </package>
