@@ -33,6 +33,7 @@ namespace ScriptCs.WebApi
             var namespaces = new[]
                 {
                     "System.Web.Http",
+                    "System.Web.Http.Routing",
                     "System.Net.Http",
                     "System.Net.Http.Headers",
                     "Owin"

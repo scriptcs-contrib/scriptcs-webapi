@@ -14,10 +14,10 @@ namespace ScriptCs.WebApi
 {
     public class FormatterBuilder
     {
-        private Func<Type, bool> _canReadType;
-        private Func<Type, bool> _canWriteType;
-        private Func<Type, Stream, HttpContent, IFormatterLogger, Task<object>> _readFromStream;
-        private Func<Type, object, Stream, HttpContent, TransportContext, CancellationToken, Task> _writeToStream;
+        private Func<Type, bool> _canReadType = t => true;
+        private Func<Type, bool> _canWriteType = t => true;
+        private Func<ReadFromStreamArgs, Task<object>> _readFromStream;
+        private Func<WriteToStreamArgs, Task> _writeToStream;
         private readonly IList<MediaTypeMapping> _mappings;
         private readonly IList<MediaTypeHeaderValue> _supportedMediaTypes;
         private readonly IList<Encoding> _supportedEncodings;
@@ -26,6 +26,7 @@ namespace ScriptCs.WebApi
         {
             _mappings = new List<MediaTypeMapping>();
             _supportedMediaTypes = new List<MediaTypeHeaderValue>();
+            _supportedEncodings = new List<Encoding>();
         }
 
         public FormatterBuilder CanReadType(Func<Type, bool> condition)
@@ -41,14 +42,14 @@ namespace ScriptCs.WebApi
         }
 
         public FormatterBuilder ReadFromStream(
-            Func<Type, Stream, HttpContent, IFormatterLogger, Task<object>> readFromStream)
+            Func<ReadFromStreamArgs, Task<object>> readFromStream)
         {
             _readFromStream = readFromStream;
             return this;
         }
 
         public FormatterBuilder WriteToStream(
-            Func<Type, object, Stream, HttpContent,TransportContext, CancellationToken, Task> writeToStream)
+            Func<WriteToStreamArgs, Task> writeToStream)
         {
             _writeToStream = writeToStream;
             return this;

@@ -7,6 +7,7 @@ using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
+using System.Web.Http.Routing;
 using Common.Logging;
 using Microsoft.Owin.Builder;
 using Microsoft.SqlServer.Server;
@@ -70,6 +71,7 @@ namespace ScriptCs.WebApi
 
             _controllerTypes = controllerTypes;
             _config = config;
+            ApplyDefaultConfiguration(_config, _controllerTypes);
             return this;
         }
 
@@ -77,6 +79,11 @@ namespace ScriptCs.WebApi
         {
             _startupAction = startupAction;
             return Configure(startupAction, config, _typeManager.GetControllerTypes(controllerAssemblies).ToArray());
+        }
+
+        public WebApi Configure(HttpConfiguration config, params Type[] controllerTypes)
+        {
+            return Configure(null, config, controllerTypes);
         }
 
         public WebApi UseJsonOnly()
@@ -98,8 +105,10 @@ namespace ScriptCs.WebApi
             return WebApp.Start(baseAddress, appBuilder =>
             {
                 appBuilder.UseWebApi(_config);
-                ApplyDefaultConfiguration(_config, _controllerTypes);
-                _startupAction(appBuilder);
+                if (_startupAction != null)
+                {
+                    _startupAction(appBuilder);
+                }
             });
         }
 

@@ -12,14 +12,14 @@ namespace ScriptCs.WebApi
     {
         private Func<Type, bool> _canReadType;
         private Func<Type, bool> _canWriteType;
-        private Func<Type, Stream, HttpContent, IFormatterLogger, Task<object>> _readFromStream;
-        private Func<Type, object, Stream, HttpContent, TransportContext, CancellationToken, Task> _writeToStream;
+        private Func<ReadFromStreamArgs, Task<object>> _readFromStream;
+        private Func<WriteToStreamArgs, Task> _writeToStream;
 
         public Formatter(
             Func<Type, bool> canReadType,
             Func<Type, bool> canWriteType,
-            Func<Type, Stream, HttpContent, IFormatterLogger, Task<object>> readFromStream,
-            Func<Type, object, Stream, HttpContent, TransportContext, CancellationToken, Task> writeToStream
+            Func<ReadFromStreamArgs, Task<object>> readFromStream,
+            Func<WriteToStreamArgs, Task> writeToStream
             )
         {
             _canReadType = canReadType;
@@ -30,14 +30,13 @@ namespace ScriptCs.WebApi
 
         public override Task<object> ReadFromStreamAsync(Type type, Stream readStream, HttpContent content, IFormatterLogger formatterLogger)
         {
-            return _readFromStream(type, readStream, content, formatterLogger);
+            return _readFromStream(new ReadFromStreamArgs(type, readStream, content, formatterLogger));
         }
-
 
         public override Task WriteToStreamAsync(Type type, object value, Stream writeStream, HttpContent content,
             TransportContext transportContext, CancellationToken cancellationToken)
         {
-            return _writeToStream(type, value, writeStream, content, transportContext, cancellationToken);
+            return _writeToStream(new WriteToStreamArgs(type, value, writeStream, content, transportContext, cancellationToken));
         }
 
         public override bool CanReadType(Type type)
