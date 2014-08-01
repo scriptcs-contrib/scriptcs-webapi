@@ -79,8 +79,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerResolver.cs" />
+    <Compile Include="Formatter.cs" />
     <Compile Include="IControllerTypeManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FormatterBuilder.cs" />
     <Compile Include="ScriptPack.cs" />
     <Compile Include="ControllerTypeManager.cs" />
     <Compile Include="WebApi.cs" />

@@ -103,6 +103,11 @@ namespace ScriptCs.WebApi
             });
         }
 
+        public FormatterBuilder NewFormatter()
+        {
+            return new FormatterBuilder();
+        }
+
         private void ApplyDefaultConfiguration(HttpConfiguration config,
                                                       IEnumerable<Type> controllerTypes)
         {
