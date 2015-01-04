@@ -47,7 +47,7 @@ server.Dispose();
 * That's it, your API is up!
 
 ## Customizing
-You can configure the OWIN host by passing in an `Action<IBuilder>` to the `Configure` method
+You can configure the OWIN host by passing in an `Action<IAppBuilder>` to the `Configure` method
 ```csharp
 var server = webapi.
 	Configure(
