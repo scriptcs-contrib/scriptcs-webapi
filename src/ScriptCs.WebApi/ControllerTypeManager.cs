@@ -5,14 +5,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Logging;
+using ScriptCs.WebApi.Logging;
 
 namespace ScriptCs.WebApi
 {
     [Export(typeof(IControllerTypeManager))]
     public class ControllerTypeManager : IControllerTypeManager
     {
-        private readonly ILog _logger;
+        private static readonly ILog _logger = LogProvider.GetCurrentClassLogger();
         private const string RoslynAssemblyNameCharacter = "ℛ";
 
         private static readonly string[] IgnoredAssemblyPrefixes = new[]
@@ -30,13 +30,6 @@ namespace ScriptCs.WebApi
                 "ScriptCs.",
                 "ServiceStack.",
             };
-
-
-        [ImportingConstructor]
-        public ControllerTypeManager(ILog logger)
-        {
-            _logger = logger;
-        }
 
         public IEnumerable<Type> GetLoadedTypes()
         {
