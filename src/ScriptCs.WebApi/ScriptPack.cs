@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using Common.Logging;
 using ScriptCs;
 using ScriptCs.Contracts;
 
@@ -12,19 +11,17 @@ namespace ScriptCs.WebApi
 {
     public class ScriptPack : IScriptPack
     {
-        private readonly ILog _logger;
         private readonly IControllerTypeManager _typeManager;
 
         [ImportingConstructor]
-        public ScriptPack(ILog logger, IControllerTypeManager typeManager)
+        public ScriptPack(IControllerTypeManager typeManager)
         {
-            _logger = logger;
             _typeManager = typeManager;
         }
 
         IScriptPackContext IScriptPack.GetContext()
         {
-            return new WebApi(_logger, _typeManager);
+            return new WebApi(_typeManager);
         }
 
         void IScriptPack.Initialize(IScriptPackSession session)

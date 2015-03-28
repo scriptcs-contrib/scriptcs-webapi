@@ -8,7 +8,6 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.Routing;
-using Common.Logging;
 using Microsoft.Owin.Builder;
 using Microsoft.SqlServer.Server;
 using Owin;
@@ -25,7 +24,6 @@ namespace ScriptCs.WebApi
     /// </summary>
     public class WebApi : IScriptPackContext
     {
-        private readonly ILog _logger;
         private readonly IControllerTypeManager _typeManager;
         private Action<IAppBuilder> _startupAction;
         private HttpConfiguration _config;
@@ -33,9 +31,8 @@ namespace ScriptCs.WebApi
         private bool _useJsonOnly;
         private MediaTypeFormatter _theFormatter;
 
-        public WebApi(ILog logger, IControllerTypeManager typeManager)
+        public WebApi(IControllerTypeManager typeManager)
         {
-            _logger = logger;
             _typeManager = typeManager;
         }
 
