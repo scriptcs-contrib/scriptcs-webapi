@@ -1,22 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.Composition;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Net.Http.Formatting;
 using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
-using System.Web.Http.Routing;
-using Common.Logging;
-using Microsoft.Owin.Builder;
-using Microsoft.SqlServer.Server;
-using Owin;
 using ScriptCs.Contracts;
-
+using Owin;
 using Microsoft.Owin.Hosting;
-using System;
-using System.Net.Http;
 
 namespace ScriptCs.WebApi
 {

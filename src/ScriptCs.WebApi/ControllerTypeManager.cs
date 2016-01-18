@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Logging;
+using ScriptCs.Contracts;
 
 namespace ScriptCs.WebApi
 {
@@ -33,9 +31,9 @@ namespace ScriptCs.WebApi
 
 
         [ImportingConstructor]
-        public ControllerTypeManager(ILog logger)
+        public ControllerTypeManager(ScriptCs.Contracts.ILogProvider loggerProvider)
         {
-            _logger = logger;
+            _logger = loggerProvider.ForCurrentType();
         }
 
         public IEnumerable<Type> GetLoadedTypes()
