@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>ScriptCs.WebApi2</id>
+      <version>$version$</version>
+        <title>ScriptCs.WebApi2</title>
+        <authors>Glenn Block</authors>
+        <owners>Glenn Block</owners>
+        <licenseUrl>https://raw.github.com/scriptcs/scriptcs-webapi/dev/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/scriptcs/scriptcs-webapi</projectUrl>
+        <iconUrl>http://www.gravatar.com/avatar/5c754f646971d8bc800b9d4057931938.png?s=120</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Script pack for ASP.NET Web API.  
+
+* Use this script pack to easily create an OWIN self-host, or configure an existing OWIN host 
+* The host is wired up to discover in-memory controllers.</description>
+        <summary />
+        <releaseNotes>1.0 - Updated to Web API 2.2
+</releaseNotes>
+        <copyright>Copyright Glenn Block 2014</copyright>
+        <tags>scriptcs webapi owin</tags>
+    </metadata>
+</package>
